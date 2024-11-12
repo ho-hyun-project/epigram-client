@@ -2,26 +2,160 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@layer base {
+  @font-face {
+    font-family: 'Pretendard';
+    src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff')
+      format('woff');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'IropkeBatang';
+    font-style: normal;
+    font-weight: 400;
+    src: url(//cdn.jsdelivr.net/font-iropke-batang/1.2/IropkeBatangM.eot);
+    src: url(//cdn.jsdelivr.net/font-iropke-batang/1.2/IropkeBatangM.eot?#iefix)
+        format('embedded-opentype'),
+      url(//cdn.jsdelivr.net/font-iropke-batang/1.2/IropkeBatangM.woff)
+        format('woff'),
+      url(//cdn.jsdelivr.net/font-iropke-batang/1.2/IropkeBatangM.ttf)
+        format('truetype');
+  }
 }
+@layer utilities {
+  .radio:checked + label i:after {
+    content: '';
+    display: block;
+    width: 50%;
+    height: 50%;
+    background: #40516e;
+    border-radius: 50%;
+  }
+  .toggle + label i:after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    transition: 0.2s transform ease;
+  }
+  .toggle:checked + label i {
+    background: #373737;
+  }
+  .toggle:checked + label i:after {
+    transform: translateX(16px);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  @media (min-width: 1200px) {
+    .toggle + label i:after {
+      width: 16px;
+      height: 16px;
+    }
+    .toggle:checked + label i:after {
+      transform: translateX(18px);
+    }
   }
 }
 
+@layer utilities {
+  .radio:checked + label i:after {
+    content: '';
+    display: block;
+    width: 50%;
+    height: 50%;
+    background: #40516e;
+    border-radius: 50%;
+  }
+  .toggle + label i:after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 50%;
+    transition: 0.2s transform ease;
+  }
+  .toggle:checked + label i {
+    background: #373737;
+  }
+  .toggle:checked + label i:after {
+    transform: translateX(16px);
+  }
+
+  @media (min-width: 1200px) {
+    .toggle + label i:after {
+      width: 16px;
+      height: 16px;
+    }
+    .toggle:checked + label i:after {
+      transform: translateX(18px);
+    }
+  }
+}
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Pretendard', sans-serif;
+  overflow-x: hidden;
+}
+body::-webkit-scrollbar {
+  width: 8px; /* 스크롤바의 너비 */
+}
+body::-webkit-scrollbar-thumb {
+  height: 5%; /* 스크롤바의 길이 */
+  background: #919191; /* 스크롤바의 색상 */
+  border-radius: 30px;
+}
+body::-webkit-scrollbar-track {
+  background: rgba(33, 122, 244, 0.1); /*스크롤바 뒷 배경 색상*/
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.like-button-image {
+  transition: transform 0.2s ease-in-out;
+}
+
+.like-button-image.active {
+  transform: translateY(4px);
+}
+
+.loader-8-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loader-8 {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.loader-8:before,
+.loader-8:after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  border-radius: 50%; /* 원형으로 만들기 */
+  transform: scale(0);
+  animation: loader8 1.5s infinite ease-in-out;
+}
+
+.loader-8:after {
+  animation-delay: 0.35s;
+}
+
+@keyframes loader8 {
+  0% {
+    transform: translateX(-100%) scale(0);
+  }
+  50% {
+    transform: translateX(0%) scale(1);
+  }
+  100% {
+    transform: translateX(100%) scale(0);
   }
 }
