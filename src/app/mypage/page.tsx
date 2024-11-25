@@ -1,3 +1,9 @@
+import EmotionCalendar from '@/components/myPage/EmotionCalender';
+
 export default function MyPage() {
-  return;
+  return (
+    <div>
+      <EmotionCalendar />
+    </div>
+  );
 }

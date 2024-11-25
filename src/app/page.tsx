@@ -101,6 +101,32 @@ const ScrollWrapper = ({ children, direction }: ScrollWrapperProps) => {
 export default function Home() {
   const mainRef = useRef<HTMLDivElement>(null);
   const animation = useAnimation();
+  const sectionRefs = useRef<HTMLDivElement[]>([]);
+  const [currentSection, setCurrentSection] = useState(0);
+
+  useEffect(() => {
+    const handleWheel = (event: WheelEvent) => {
+      if (event.deltaY > 0 && currentSection < sectionRefs.current.length - 1) {
+        setCurrentSection(currentSection + 1);
+        event.preventDefault();
+      } else if (event.deltaY < 0 && currentSection > 0) {
+        setCurrentSection(currentSection - 1);
+        event.preventDefault();
+      }
+    };
+
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+    };
+  }, [currentSection]);
+
+  useEffect(() => {
+    sectionRefs.current[currentSection]?.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }, [currentSection]);
 
   const scrollToMain = () => {
     if (mainRef.current) {
@@ -110,7 +136,6 @@ export default function Home() {
 
   const router = useRouter();
   const handleClick = () => {
-    //시작하기 버튼 클릭시
     router.push('/epigrams');
   };
 
