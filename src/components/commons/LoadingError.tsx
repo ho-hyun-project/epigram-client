@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import IcoError from '@/public/assets/ic_error.svg';
+import IcoError from '../../../Public/assets/ic_error.svg';
 import Image from 'next/image';
 
 export default function LoadingError({ children }: { children: ReactNode }) {

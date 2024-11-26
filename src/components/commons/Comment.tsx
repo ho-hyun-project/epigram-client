@@ -3,7 +3,7 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 
-import IcoUser from '@/public/assets/ic_user.svg';
+import IcoUser from '../../../Public/assets/ic_user.svg';
 import { CommentType } from '@/types/types';
 import Image from 'next/image';
 import Link from 'next/link';

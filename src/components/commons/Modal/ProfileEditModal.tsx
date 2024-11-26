@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
 import IcoClose from '@/public/assets/ic_close.svg';
-import { User } from '@/src/types/auth';
+import { User } from '@/types/auth';
 import Image from 'next/image';
 
-import { patchUserInfo, postImage } from '@/src/app/api/user';
+import { patchUserInfo, postImage } from '@/app/api/user';
 
 import Button from '../Button';
 import FileInput from '../FileInput';

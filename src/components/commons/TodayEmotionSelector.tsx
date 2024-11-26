@@ -9,8 +9,6 @@ import {
   UNCLICKED_EMOTION,
 } from '../../../Public/assets/emotionChart/emotion';
 
-import '@/src/components/myPage/EmotionCalender.css';
-
 import { getTodayEmotion, postTodayEmotion } from '../../app/api/emotionLog';
 import { Emotion } from '../../types/emotion';
 
